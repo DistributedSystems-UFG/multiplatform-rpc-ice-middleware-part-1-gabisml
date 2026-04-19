@@ -6,11 +6,17 @@ class PrinterI(Demo.Printer):
         print(s)
         return s + "*"
 
+    def maiusculas(self, s, current=None):
+        return s.upper()
+
+    def contaPalavras(self, s, current=None):
+        return len(s.split())
+
 communicator = Ice.initialize(sys.argv) 
 
 adapter = communicator.createObjectAdapterWithEndpoints("SimpleAdapter", "default -p 11000")
 object = PrinterI()
-adapter.add(object, communicator.stringToIdentity("SimplePrinter"))
+adapter.add(object, Ice.stringToIdentity("SimplePrinter"))
 adapter.activate()
 
 communicator.waitForShutdown()

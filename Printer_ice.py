@@ -39,6 +39,12 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
         def end_printString(self, _r):
             return _M_Demo.Printer._op_printString.end(self, _r)
 
+        def maiusculas(self, s, context=None):
+            return _M_Demo.Printer._op_maiusculas.invoke(self, ((s, ), context))
+
+        def contaPalavras(self, s, context=None):
+            return _M_Demo.Printer._op_contaPalavras.invoke(self, ((s, ), context))
+
         @staticmethod
         def checkedCast(proxy, facetOrContext=None, context=None):
             return _M_Demo.PrinterPrx.ice_checkedCast(proxy, '::Demo::Printer', facetOrContext, context)
@@ -71,6 +77,12 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
         def printString(self, s, current=None):
             raise NotImplementedError("servant method 'printString' not implemented")
 
+        def maiusculas(self, s, current=None):
+            raise NotImplementedError("servant method 'maiusculas' not implemented")
+
+        def contaPalavras(self, s, current=None):
+            raise NotImplementedError("servant method 'contaPalavras' not implemented")
+
         def __str__(self):
             return IcePy.stringify(self, _M_Demo._t_PrinterDisp)
 
@@ -79,7 +91,9 @@ if 'PrinterPrx' not in _M_Demo.__dict__:
     _M_Demo._t_PrinterDisp = IcePy.defineClass('::Demo::Printer', Printer, (), None, ())
     Printer._ice_type = _M_Demo._t_PrinterDisp
 
-    Printer._op_printString = IcePy.Operation('printString', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), None, ())
+    Printer._op_printString = IcePy.Operation('printString', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), ((), IcePy._t_string, False, 0), ())
+    Printer._op_maiusculas    = IcePy.Operation('maiusculas',    Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), ((), IcePy._t_string, False, 0), ())
+    Printer._op_contaPalavras = IcePy.Operation('contaPalavras', Ice.OperationMode.Normal, Ice.OperationMode.Normal, False, None, (), (((), IcePy._t_string, False, 0),), (), ((), IcePy._t_int,    False, 0), ())
 
     _M_Demo.Printer = Printer
     del Printer
